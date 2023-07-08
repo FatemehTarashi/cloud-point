@@ -66,6 +66,8 @@ It finds the group of the points with the same height, then selects the group th
 We use the simplest method, Minimum Height Extraction. This function takes a cloud point and a height (which is basically obtained from the previous function) and recognizes the ground based on that.
 
 For this purpose, you can use other methods such as RANSAC(Random Sample Consensus), PCA (Principal Component Analysis), or Smoothing methods like Moving Average Filtering. I think this method works better for bigger cloud point.
+![ground](2.png)
+
 #### non_ground_detection
 This function is the opposite of the ground_detection function
 
@@ -73,6 +75,7 @@ This function is the opposite of the ground_detection function
 SOR (Statistical Outlier Removal) identifies and removes outlier points based on statistical analysis of the information present in the point cloud. 
 
 You can use Voxel Grid Filter, Radius Outlier Removal, or Conditional Outlier Removal.
+![SOR filter](1.png)
 
 ### DBSCAN
 ### shadow
