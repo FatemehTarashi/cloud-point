@@ -18,7 +18,11 @@ def sor(points):
     cloud = PyntCloud(df)
 
     # Apply a Statistical Outlier Removal (SOR) filter
-    kdtree_id = cloud.add_structure("kdtree")
+    #A KDTree is created to make the operation faster.
+    kdtree_id = cloud.add_structure("kdtree") 
+    
+    # k: the number of neighbors of each point and z_max: allowed height for points.
     sor_filter = cloud.get_filter("SOR", kdtree_id=kdtree_id, k=20, z_max=1)
+    
     cloud.apply_filter(sor_filter)
     return cloud.xyz
