@@ -14,7 +14,8 @@ def find_big_part(points):
         numpy.ndarray: bigest part of points
     """
     
-    #DBSCAN
+    # # Apply a DBSCAN
+    # eps: the radius (distance) that determines the points are considered as neighbors. and min_samples: minimum number of points to form a cluster.
     db = DBSCAN(eps=0.3, min_samples=10).fit(points)
     labels = db.labels_
 
@@ -22,8 +23,8 @@ def find_big_part(points):
     n_clusters_ = len(set(labels)) - (1 if -1 in labels else 0)
     n_noise_ = list(labels).count(-1)
 
-    print('Estimated number of clusters: %d' % n_clusters_)
-    print('Estimated number of noise points: %d' % n_noise_)
+    #print('Estimated number of clusters: %d' % n_clusters_)
+    #print('Estimated number of noise points: %d' % n_noise_)
 
     # Find the label of the largest cluster
     counter = Counter(labels)
