@@ -43,8 +43,6 @@ $ cd Task_Fatemetarashi/
 
 <!-- -->
 # Codes
-- cp.cfg
-- cp.py
 
 ## configuration file
 Due to the fact that our ".las" file is a part of the whole and because paths are not hardcoded in the program, we have the configuration file cp.cfg
@@ -71,8 +69,11 @@ For this purpose, you can use other methods such as RANSAC(Random Sample Consens
 #### non_ground_detection
 This function is the opposite of the ground_detection function
 
-
 ### statistical_Outlier_Removal_filter
+SOR (Statistical Outlier Removal) identifies and removes outlier points based on statistical analysis of the information present in the point cloud. 
+
+You can use Voxel Grid Filter, Radius Outlier Removal, or Conditional Outlier Removal.
+
 ### DBSCAN
 ### shadow
 ### main
