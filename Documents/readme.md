@@ -11,6 +11,8 @@
         - [statistical_Outlier_Removal_filter](#statistical_outlier_removal_filter)
         - [DBSCAN](#dbscan)
         - [shadow](#shadow)
+        - [triangulation](#triangulation)
+        - [volume](#volume)
         - [main](#main)
 - [Documents](#documents)
 - [Exports](#exports)
@@ -21,8 +23,6 @@
 - [Information_Data](#information_data)
     - [task_rs_pc](#task_rs_pc)
     - [task_subset](#task_subset)
-
-
 
 # set up:
 
@@ -78,8 +78,22 @@ You can use Voxel Grid Filter, Radius Outlier Removal, or Conditional Outlier Re
 ![SOR filter](1.png)
 
 ### DBSCAN
+DBSCAN (Density-Based Spatial Clustering of Applications with Noise). DBSCAN is a density-based clustering algorithm used to detect clusters in heterogeneously distributed data as well as detect noisy points. But, here we return the largest cluster as output!
+![SOR filter](3.png)
+
 ### shadow
+This is probably not a good method, but anyway! It can be said that the shadow of the cloud sticks to it.
+![SOR filter](4.png)
+
+### triangulation
+Creates a triangulation of cloud points
+![SOR filter](5.png)
+
+### volume
+It calculates the volume, it can be said that it calculates the volume of the cloud of triangulated points
+
 ### main
+Because this main is not supposed to be the main, no principles have been written, and mostly written for testing functions and working with cloud points. For this reason, many commands are commented!!!
 
 <!-- -->
 # Documents
@@ -89,10 +103,13 @@ We have a README file in Markdown format in this directory. If you are having tr
 # Exports 
 
 ## numpy files
-
+Due to the speed and conditions of my system, we have a series of outputs in the form of Python files that are produced in different stages and then used.
 ### afterSOR
+numpy array of cloud points after SOR filter
 ### big_part
+numpy array of cloud points after DBSCAN function( DBSCAN filter and choose the largest part
 ### combined_points
+numpy array of cloud points after shadow function
 
 <!-- -->
 # Information_Data
