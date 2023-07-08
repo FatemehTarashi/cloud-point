@@ -6,12 +6,12 @@ from sklearn.cluster import DBSCAN
 from collections import Counter
 from scipy.spatial import ConvexHull
 
-
 from readAndPlot import plot_las_file, plot_npy_file
 from statistical_Outlier_Removal_filter import sor
 from groundDetection import threshold_height, ground_detection, non_ground_detection
 from DBSCAN import find_big_part
 from shadow import combined_with_shadow
+from volume import calculate_volume
 
 # CONFIG
 config = configparser.ConfigParser()
@@ -70,6 +70,10 @@ mesh.save('mesh.stl')
 mesh.plot(color='orange')
 
 
+volume = calculate_volume(points)
+print(f"volume: {volume}")
+
+ 
 
 '''
 #Compute the convex hull of the point cloud
