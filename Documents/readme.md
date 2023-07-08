@@ -18,7 +18,7 @@
         - [afterSOR](#aftersor)
         - [big_part](#big_part)
         - [combined_points](#combined_points)
-- [Information_Data](#information-data)
+- [Information_Data](#information_data)
     - [task_rs_pc](#task_rs_pc)
     - [task_subset](#task_subset)
 
@@ -63,9 +63,13 @@ Reads the numpy array cloud points from the .npy file and displays them.
 ### groundDetection
 This file contains 3 functions:
 #### threshold_height
+It finds the group of the points with the same height, then selects the group that has the maximum member and the lowest height and returns the height of that point.
 #### ground_detection
-####  non_ground_detection
+We use the simplest method, Minimum Height Extraction. This function takes a cloud point and a height (which is basically obtained from the previous function) and recognizes the ground based on that.
 
+For this purpose, you can use other methods such as RANSAC(Random Sample Consensus), PCA (Principal Component Analysis), or Smoothing methods like Moving Average Filtering. I think this method works better for bigger cloud point.
+#### non_ground_detection
+This function is the opposite of the ground_detection function
 
 
 ### statistical_Outlier_Removal_filter
