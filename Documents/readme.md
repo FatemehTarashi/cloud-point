@@ -79,7 +79,7 @@ You can use Voxel Grid Filter, Radius Outlier Removal, or Conditional Outlier Re
 
 ### DBSCAN
 DBSCAN (Density-Based Spatial Clustering of Applications with Noise). DBSCAN is a density-based clustering algorithm used to detect clusters in heterogeneously distributed data as well as detect noisy points. But, here we return the largest cluster as output!
-![dbscan](5.png)
+![dbscan](3.png)
 
 ### shadow
 This is probably not a good method, but anyway! It can be said that the shadow of the cloud sticks to it.
