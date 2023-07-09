@@ -90,7 +90,7 @@ Creates a triangulation of cloud points
 ![triangulation](5.png)
 ![triangulation](4.png)
 ### volume
-It calculates the volume based on ConvexHull
+It calculates the volume based on ConvexHull, base on ground or height percentage
 
 ### main
 Because this main is not supposed to be the main, no principles have been written, and mostly written for testing functions and working with cloud points. For this reason, many commands are commented!!!
