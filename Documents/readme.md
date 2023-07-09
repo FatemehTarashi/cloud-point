@@ -105,11 +105,18 @@ We have a README file in Markdown format in this directory. If you are having tr
 ## numpy files
 Due to the speed and conditions of my system, we have a series of outputs in the form of Python files that are produced in different stages and then used.
 ### afterSOR
-numpy array of cloud points after SOR filter
+numpy array of cloud points after the SOR filter
 ### big_part
 numpy array of cloud points after DBSCAN function( DBSCAN filter and choose the largest part
 ### combined_points
 numpy array of cloud points after shadow function
+
+## stl file
+### mesh
+mesh from triangulation
+
+## text file
+Volume calculation output
 
 <!-- -->
 # Information_Data
