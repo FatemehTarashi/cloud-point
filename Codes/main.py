@@ -54,14 +54,14 @@ NAME =config.get('DATA','DATA_NAME') # Name of the data file
 
 #####
 points = plot_npy_file('/home/Fatemeh/Task_Fatemetarashi/Exports/big_part.npy', 'big_part')
-pc = pv.PolyData(points) 
-h = threshold_height(pc)
-height_difference = points[:, 2].max() - points[:, 2].min()
-n=0
-combined_points = combined_with_shadow(points,h+height_difference*n)
+#pc = pv.PolyData(points) 
+#h = threshold_height(pc)
+#height_difference = points[:, 2].max() - points[:, 2].min()
+#n=0
+#combined_points = combined_with_shadow(points,h+height_difference*n)
 
-cloud = pv.PolyData(combined_points)
-cloud.plot(eye_dome_lighting=True)
+#cloud = pv.PolyData(combined_points)
+#cloud.plot(eye_dome_lighting=True)
 
 #np.save('/home/Fatemeh/Task_Fatemetarashi/Exports/combined_points.npy', combined_points)
 #####
@@ -76,11 +76,11 @@ cloud.plot(eye_dome_lighting=True)
 
 #mesh = pv.read('/home/Fatemeh/Task_Fatemetarashi/Exports/mesh.stl')
 #mesh.plot(eye_dome_lighting=True, zoom = 3)
-
-volume = calculate_volume(combined_points )
+n=0.75
+volume = calculate_volume(points,1-n)
 
 with open('/home/Fatemeh/Task_Fatemetarashi/Exports/volume.txt', 'a') as f:
-    f.write(f"\nvolume{volume}  for {1-n}% height")
+    f.write(f"\nvolume{volume}  for {(n)*100}% height")
 
 
 
