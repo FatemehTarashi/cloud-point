@@ -6,14 +6,12 @@ from sklearn.cluster import DBSCAN
 from collections import Counter
 from scipy.spatial import ConvexHull
 
-
 from readAndPlot import plot_las_file, plot_npy_file
 from statistical_Outlier_Removal_filter import sor
 from groundDetection import threshold_height, ground_detection, non_ground_detection
 from DBSCAN import find_big_part
 from shadow import combined_with_shadow
 from volume import calculate_volume
-
 
 # CONFIG
 config = configparser.ConfigParser()
@@ -53,7 +51,7 @@ NAME =config.get('DATA','DATA_NAME') # Name of the data file
 #np.save('/home/Fatemeh/Task_Fatemetarashi/Exports/big_part.npy', big_part)
 
 #####
-points = plot_npy_file('/home/Fatemeh/Task_Fatemetarashi/Exports/big_part.npy', 'big_part')
+#points = plot_npy_file('/home/Fatemeh/Task_Fatemetarashi/Exports/big_part.npy', 'big_part')
 #pc = pv.PolyData(points) 
 #h = threshold_height(pc)
 #height_difference = points[:, 2].max() - points[:, 2].min()
@@ -74,16 +72,12 @@ points = plot_npy_file('/home/Fatemeh/Task_Fatemetarashi/Exports/big_part.npy', 
 
 ######
 
-#mesh = pv.read('/home/Fatemeh/Task_Fatemetarashi/Exports/mesh.stl')
+mesh = pv.read('/home/Fatemeh/Task_Fatemetarashi/Exports/mesh.stl')
+volume = mesh.volume
+print(volume)
 #mesh.plot(eye_dome_lighting=True, zoom = 3)
-n=0.75
-volume = calculate_volume(points,1-n)
+#n=0.75
+#volume = calculate_volume(points,1-n)
 
-with open('/home/Fatemeh/Task_Fatemetarashi/Exports/volume.txt', 'a') as f:
-    f.write(f"\nvolume{volume}  for {(n)*100}% height")
-
-
-
-
-    
-
+#with open('/home/Fatemeh/Task_Fatemetarashi/Exports/volume.txt', 'a') as f:
+    #f.write(f"\nvolume{volume}  for {(n)*100}% height")
