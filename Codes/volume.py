@@ -4,9 +4,8 @@ import pyvista as pv
 from groundDetection import threshold_height
 from shadow import combined_with_shadow
 
-
 def calculate_volume(points):
-        """
+    """
     calculate  cloud points volume base on ground
 
     Args:
@@ -18,9 +17,8 @@ def calculate_volume(points):
     hull = ConvexHull(points)
     return hull.volume
 
-
 def calculate_volume(points,height_precentage):
-            """
+    """
     calculate  cloud points volume base on height
 
     Args:
