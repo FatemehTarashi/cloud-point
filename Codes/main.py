@@ -6,12 +6,14 @@ from sklearn.cluster import DBSCAN
 from collections import Counter
 from scipy.spatial import ConvexHull
 
+
 from readAndPlot import plot_las_file, plot_npy_file
 from statistical_Outlier_Removal_filter import sor
 from groundDetection import threshold_height, ground_detection, non_ground_detection
 from DBSCAN import find_big_part
 from shadow import combined_with_shadow
 from volume import calculate_volume
+
 
 # CONFIG
 config = configparser.ConfigParser()
@@ -51,78 +53,35 @@ NAME =config.get('DATA','DATA_NAME') # Name of the data file
 #np.save('/home/Fatemeh/Task_Fatemetarashi/Exports/big_part.npy', big_part)
 
 #####
-#points = plot_npy_file('/home/Fatemeh/Task_Fatemetarashi/Exports/big_part.npy', 'big_part')
+points = plot_npy_file('/home/Fatemeh/Task_Fatemetarashi/Exports/big_part.npy', 'big_part')
+pc = pv.PolyData(points) 
+h = threshold_height(pc)
+height_difference = points[:, 2].max() - points[:, 2].min()
+n=0
+combined_points = combined_with_shadow(points,h+height_difference*n)
 
-#combined_points = combined_with_shadow(points)
-
-#cloud = pv.PolyData(combined_points)
-#cloud.plot(eye_dome_lighting=True)
+cloud = pv.PolyData(combined_points)
+cloud.plot(eye_dome_lighting=True)
 
 #np.save('/home/Fatemeh/Task_Fatemetarashi/Exports/combined_points.npy', combined_points)
 #####
 
-points = plot_npy_file('/home/Fatemeh/Task_Fatemetarashi/Exports/combined_points.npy', 'combined_points')
+#points = plot_npy_file('/home/Fatemeh/Task_Fatemetarashi/Exports/combined_points.npy', 'combined_points')
 
-point_cloud = pv.PolyData(points)
-mesh = point_cloud.reconstruct_surface()
-mesh.save('mesh.stl')
+#point_cloud = pv.PolyData(points)
+#mesh = point_cloud.reconstruct_surface(progress_bar=True)
+#mesh.save('/home/Fatemeh/Task_Fatemetarashi/Exports/mesh.stl')
 
-mesh.plot(color='orange')
+######
 
+#mesh = pv.read('/home/Fatemeh/Task_Fatemetarashi/Exports/mesh.stl')
+#mesh.plot(eye_dome_lighting=True, zoom = 3)
 
-volume = calculate_volume(points)
-print(f"volume: {volume}")
+volume = calculate_volume(combined_points )
 
- 
+with open('/home/Fatemeh/Task_Fatemetarashi/Exports/volume.txt', 'a') as f:
+    f.write(f"\nvolume{volume}  for {1-n}% height")
 
-'''
-#Compute the convex hull of the point cloud
-hull = ConvexHull(points)
-
-#Get the vertices of the convex hull
-vertices = points[hull.vertices]
-
-#Create a new PyVista point cloud object
-cloud = pv.PolyData(vertices)
-
-#Create a plotter object
-plotter = pv.Plotter()
-
-#Add the point cloud object to the plotter
-plotter.add_points(cloud, color='red')
-
-#Show the plot
-plotter.show()
-'''
-
-
-
-
-
-
-
-
-
-#######
-#loaded_clean_points = np.load('/home/Fatemeh/Task_Fatemetarashi/Exports/clean_cloud.npy')
-#clean_cloud = pv.PolyData(loaded_clean_points)
-#clean_cloud.plot(eye_dome_lighting=True)
-
-#pc = pv.PolyData(loaded_clean_points) 
-#t_hight = threshold_height(pc)
-
-#non_ground_points = non_ground_detection(t_hight, loaded_clean_points)
-#non_ground_cloud = pv.PolyData(non_ground_points)
-#non_ground_cloud.plot(eye_dome_lighting=True)
-
-#np.save('/home/Fatemeh/Task_Fatemetarashi/Exports/clean_cloud2.npy', non_ground_points)
-
-#######
-#loaded_clean_points = np.load('/home/Fatemeh/Task_Fatemetarashi/Exports/clean_cloud2.npy')
-#clean_cloud = pv.PolyData(loaded_clean_points)
-#clean_cloud.plot(eye_dome_lighting=True)
-
-#points = loaded_clean_points
 
 
 

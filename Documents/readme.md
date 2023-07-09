@@ -79,18 +79,18 @@ You can use Voxel Grid Filter, Radius Outlier Removal, or Conditional Outlier Re
 
 ### DBSCAN
 DBSCAN (Density-Based Spatial Clustering of Applications with Noise). DBSCAN is a density-based clustering algorithm used to detect clusters in heterogeneously distributed data as well as detect noisy points. But, here we return the largest cluster as output!
-![SOR filter](3.png)
+![dbscan](5.png)
 
 ### shadow
 This is probably not a good method, but anyway! It can be said that the shadow of the cloud sticks to it.
-![SOR filter](4.png)
+![shadow](6.png)
 
 ### triangulation
 Creates a triangulation of cloud points
-![SOR filter](5.png)
-
+![triangulation](5.png)
+![triangulation](4.png)
 ### volume
-It calculates the volume, it can be said that it calculates the volume of the cloud of triangulated points
+It calculates the volume based on ConvexHull
 
 ### main
 Because this main is not supposed to be the main, no principles have been written, and mostly written for testing functions and working with cloud points. For this reason, many commands are commented!!!

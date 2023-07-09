@@ -29,3 +29,31 @@ def combined_with_shadow(points):
     combined_points = np.vstack((points, projection_points))
     
     return combined_points
+
+
+def combined_with_shadow(points,projection_height):
+    """
+    Combine the original points and the projection points  
+
+    Args:
+        points: numpy.ndarray of cloud points
+        prohection_height: number
+
+    Returns:
+        numpy.ndarray: clean points
+    """
+    #remove all point under projection_height
+    points = points[points[:, 2] >= projection_height]
+    
+    pc = pv.PolyData(points) # Create a PyVista PolyData object for plotting
+
+    # Create a copy of the points
+    projection_points = points.copy()
+
+    # Set the z-coordinate to the projection height
+    projection_points[:, 2] = projection_height
+
+    # Combine the original points and the projection points
+    combined_points = np.vstack((points, projection_points))
+    
+    return combined_points
