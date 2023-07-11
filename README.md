@@ -1,10 +1,9 @@
-# point-cloud
+# cloud-point
 A small program to calculate the volume of the cloud point from las file
-
 
  ## Contents
 <!-- -->
-- [set up](#set-up)
+- [Initial set up](#set-up)
 - [Codes](#codes)
     - [configuration file](#configuration-file)
     - [python files](#python-files)
@@ -16,7 +15,7 @@ A small program to calculate the volume of the cloud point from las file
         - [triangulation](#triangulation)
         - [volume](#volume)
         - [main](#main)
-- [Documents](#documents)
+- [Screenshot](#screenshot)
 - [Exports](#exports)
     - [numpy files](#numpy-files)
         - [afterSOR](#aftersor)
@@ -39,7 +38,7 @@ $ cd Task_Fatemetarashi/
 ```
  We see four directories:
 - Codes
-- Documents
+- Screenshot
 - Exports
 - Information_Data 
 
