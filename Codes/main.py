@@ -6,7 +6,6 @@ from sklearn.cluster import DBSCAN
 from collections import Counter
 from scipy.spatial import ConvexHull
 
-
 from readAndPlot import plot_las_file, plot_npy_file
 from statistical_Outlier_Removal_filter import sor
 from groundDetection import threshold_height, ground_detection, non_ground_detection
@@ -46,13 +45,13 @@ NAME =config.get('DATA','DATA_NAME') # Name of the data file
 
 #np.save('/home/Fatemeh/Task_Fatemetarashi/Exports/afterSOR.npy', afterfilterpoints)
 
-######
+#######
 #points = plot_npy_file('/home/Fatemeh/Task_Fatemetarashi/Exports/afterSOR.npy', 'afterSOR')
 
 #big_part = find_big_part(points)
 #np.save('/home/Fatemeh/Task_Fatemetarashi/Exports/big_part.npy', big_part)
 
-#####
+#######
 #points = plot_npy_file('/home/Fatemeh/Task_Fatemetarashi/Exports/big_part.npy', 'big_part')
 #pc = pv.PolyData(points) 
 #h = threshold_height(pc)
@@ -64,7 +63,8 @@ NAME =config.get('DATA','DATA_NAME') # Name of the data file
 #cloud.plot(eye_dome_lighting=True)
 
 #np.save('/home/Fatemeh/Task_Fatemetarashi/Exports/combined_points.npy', combined_points)
-#####
+
+#######
 
 #points = plot_npy_file('/home/Fatemeh/Task_Fatemetarashi/Exports/combined_points.npy', 'combined_points')
 
@@ -72,7 +72,7 @@ NAME =config.get('DATA','DATA_NAME') # Name of the data file
 #mesh = point_cloud.reconstruct_surface(progress_bar=True)
 #mesh.save('/home/Fatemeh/Task_Fatemetarashi/Exports/mesh.stl')
 
-######
+#######
 
 #mesh = pv.read('/home/Fatemeh/Task_Fatemetarashi/Exports/mesh.stl')
 #volume = mesh.volume
@@ -99,16 +99,25 @@ plane = pv.Plane(center=(cloud.center[0], cloud.center[1], h),
 
 # Extrude the point cloud to the ground plane
 extruded_cloud = cloud.extrude_trim((0, 0, -1), plane)
+extruded_cloud.plot(eye_dome_lighting=True)
 
 # Visualize the original point cloud and the extruded surface
-p = pv.Plotter(shape=(1, 2))
-p.add_mesh(cloud, color='red')
-p.add_text('Original Cloud Point', position='upper_edge')
+#p = pv.Plotter(shape=(1, 2))
+#p.add_mesh(cloud, color='red')
+#p.add_text('Original Cloud Point', position='upper_edge')
 
-p.subplot(0, 1)
-p.add_mesh(plane, style='wireframe', color='black')
-p.add_mesh(extruded_cloud, color='blue')
-p.add_text('Extruded one', position='upper_edge')
+#p.subplot(0, 1)
+#p.add_mesh(plane, style='wireframe', color='black')
+#p.add_mesh(extruded_cloud, color='blue')
+#p.add_text('Extruded one', position='upper_edge')
 
-p.link_views()
-p.show()
+#p.link_views()
+#p.show()
+
+
+#afterfilterpoints = sor(extruded_cloud.points)
+#clean_cloud = pv.PolyData(afterfilterpoints)
+#clean_cloud.plot(eye_dome_lighting=True)
+
+
+
